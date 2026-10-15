@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Узнайте легальный статус в Европе</title>
+    
+    <!-- Meta Pixel Code -->
+    <script>
+        !function(f,b,e,v,n,t,s)
+        {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+        n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+        if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+        n.queue=[];t=b.createElement(e);t.async=!0;
+        t.src=v;s=b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t,s)}(window, document,'script',
+        'https://connect.facebook.net/en_US/fbevents.js');
+        fbq('init', '1636543864097873');
+        fbq('track', 'PageView');
+    </script>
+    <noscript>
+        <img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1636543864097873&ev=PageView&noscript=1"/>
+    </noscript>
+    <!-- End Meta Pixel Code -->
+
+    <style>
+        :root {
+            --bg-gradient: radial-gradient(circle at 50% 50%, #fbfbfd 0%, #eef2f7 100%);
+            --text-main: #111111;
+            --text-muted: #555555;
+            --accent-blue: #004694;
+            --border-color: #d1d5db;
+            --card-bg: rgba(255, 255, 255, 0.9);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background: var(--bg-gradient);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: var(--text-main);
+            padding: 20px;
+        }
+
+        .quiz-container {
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            width: 100%;
+            max-width: 540px;
+            border-radius: 24px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
+            padding: 40px 30px;
+            border: 1px solid rgba(255, 255, 255, 0.7);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Progress Bar */
+        .progress-container {
+            width: 100%;
+            height: 6px;
+            background: #e5e7eb;
+            border-radius: 10px;
+            margin-bottom: 35px;
+        }
+
+        .progress-bar {
+            height: 100%;
+            width: 25%;
+            background: var(--accent-blue);
+            border-radius: 10px;
+            transition: width 0.4s ease;
+        }
+
+        /* Steps */
+        .quiz-step {
+            display: none;
+        }
+
+        .quiz-step.active {
+            display: block;
+            animation: fadeIn 0.4s ease forwards;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        h2 {
+            font-size: 24px;
+            font-weight: 700;
+            line-height: 1.3;
+            margin-bottom: 25px;
+            text-align: center;
+        }
+
+        /* Options */
+        .options-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-bottom: 25px;
+        }
+
+        .option-item {
+            display: flex;
+            align-items: center;
+            padding: 16px 20px;
+            border: 1px solid var(--border-color);
+            border-radius: 30px;
+            cursor: pointer;
+            background: #ffffff;
+            transition: all 0.2s ease;
+        }
+
+        .option-item:hover {
+            border-color: var(--accent-blue);
+            background: #f8fafc;
+        }
+
+        .option-item input[type="radio"] {
+            display: none;
+        }
+
+        .dot {
+            width: 8px;
+            height: 8px;
+            background: transparent;
+            border: 2px solid var(--border-color);
+            border-radius: 50%;
+            margin-right: 14px;
+            transition: all 0.2s ease;
+        }
+
+        .option-item input[type="radio"]:checked + .dot {
+            background: var(--accent-blue);
+            border-color: var(--accent-blue);
+            box-shadow: 0 0 0 4px rgba(0, 70, 148, 0.2);
+        }
+
+        .option-text {
+            font-size: 16px;
+            font-weight: 500;
+        }
+
+        /* Conditional Inputs */
+        .conditional-input {
+            display: none;
+            margin-top: 10px;
+            width: 100%;
+        }
+
+        .conditional-input input, .form-group input, .phone-select {
+            width: 100%;
+            padding: 14px 20px;
+            border: 1px solid var(--border-color);
+            border-radius: 30px;
+            font-size: 16px;
+            outline: none;
+            transition: border-color 0.2s;
+            background: #ffffff;
+        }
+
+        .conditional-input input:focus, .form-group input:focus, .phone-select:focus {
+            border-color: var(--accent-blue);
+        }
+
+        /* Contact Form Specifics */
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: var(--text-muted);
+            padding-left: 10px;
+        }
+
+        .phone-input-wrapper {
+            display: flex;
+            gap: 10px;
+        }
+
+        .phone-select {
+            width: 110px;
+            padding: 14px 10px;
+            text-align: center;
+        }
+
+        /* Buttons Navigation */
+        .btn-container {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .btn {
+            padding: 14px 28px;
+            border-radius: 30px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            border: none;
+        }
+
+        .btn-back {
+            background: transparent;
+            color: var(--text-muted);
+            border: 1px solid var(--border-color);
+        }
+
+        .btn-back:hover {
+            background: #f1f5f9;
+            color: var(--text-main);
+        }
+
+        .btn-next {
+            background: var(--accent-blue);
+            color: #ffffff;
+            flex-grow: 1;
+        }
+
+        .btn-next:hover {
+            background: #00336c;
+            box-shadow: 0 4px 12px rgba(0, 70, 148, 0.2);
+        }
+
+        .btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        /* Error state */
+        .error-msg {
+            color: #dc2626;
+            font-size: 13px;
+            margin-top: 5px;
+            padding-left: 12px;
+            display: none;
+        }
+
+        /* Текст финального экрана */
+        .success-desc {
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 16px;
+            line-height: 1.5;
+        }
+    </style>
+</head>
+<body>
+
+<div class="quiz-container">
+    <!-- Индикатор прогресса -->
+    <div class="progress-container" id="progressContainer">
+        <div class="progress-bar" id="progressBar"></div>
+    </div>
+
+    <form id="quizForm" onsubmit="handleFormSubmit(event)">
+        
+        <!-- ШАГ 1: Страна проживания -->
+        <div class="quiz-step active" data-step="1">
+            <h2>В какой стране вы сейчас проживаете?</h2>
+            <div class="options-list">
+                <label class="option-item">
+                    <input type="radio" name="living_country" value="Украина" onclick="toggleConditional(1, false)">
+                    <div class="dot"></div>
+                    <span class="option-text">Украина</span>
+                </label>
+                <label class="option-item">
+                    <input type="radio" name="living_country" value="Польша" onclick="toggleConditional(1, false)">
+                    <div class="dot"></div>
+                    <span class="option-text">Польша</span>
+                </label>
+                <label class="option-item">
+                    <input type="radio" name="living_country" value="Германия" onclick="toggleConditional(1, false)">
+                    <div class="dot"></div>
+                    <span class="option-text">Германия</span>
+                </label>
+                <label class="option-item">
+                    <input type="radio" name="living_country" value="Чехия" onclick="toggleConditional(1, false)">
+                    <div class="dot"></div>
+                    <span class="option-text">Чехия</span>
+                </label>
+                <label class="option-item">
+                    <input type="radio" name="living_country" value="Other" id="countryOtherRadio" onclick="toggleConditional(1, true)">
+                    <div class="dot"></div>
+                    <span class="option-text">Другая страна</span>
+                </label>
+            </div>
+            <div class="conditional-input" id="conditional-step1">
+                <input type="text" id="custom_living_country" placeholder="Введите название страны">
+            </div>
+        </div>
+
+        <!-- ШАГ 2: Гражданство -->
+        <div class="quiz-step" data-step="2">
+            <h2>Какое у вас гражданство?</h2>
+            <div class="options-list">
+                <label class="option-item">
+                    <input type="radio" name="citizenship" value="Украина" onclick="toggleConditional(2, false)">
+                    <div class="dot"></div>
+                    <span class="option-text">Украина</span>
+                </label>
+                <label class="option-item">
+                    <input type="radio" name="citizenship" value="Беларусь" onclick="toggleConditional(2, false)">
+                    <div class="dot"></div>
+                    <span class="option-text">Беларусь</span>
+                </label>
+                <label class="option-item">
+                    <input type="radio" name="citizenship" value="Казахстан" onclick="toggleConditional(2, false)">
+                    <div class="dot"></div>
+                    <span class="option-text">Казахстан</span>
+                </label>
+                <label class="option-item">
+                    <input type="radio" name="citizenship" value="Other" id="citizenshipOtherRadio" onclick="toggleConditional(2, true)">
+                    <div class="dot"></div>
+                    <span class="option-text">Гражданство другой страны</span>
+                </label>
+            </div>
+            <div class="conditional-input" id="conditional-step2">
+                <input type="text" id="custom_citizenship" placeholder="Укажите ваше гражданство">
+            </div>
+        </div>
+
+        <!-- ШАГ 3: Цель получения -->
+        <div class="quiz-step" data-step="3">
+            <h2>С какой целью хотите получить статус?</h2>
+            <div class="options-list">
+                <label class="option-item">
+                    <input type="radio" name="goal" value="Легальное проживание">
+                    <div class="dot"></div>
+                    <span class="option-text">Легальное проживание</span>
+                </label>
+                <label class="option-item">
+                    <input type="radio" name="goal" value="Легально перемещаться по Европе">
+                    <div class="dot"></div>
+                    <span class="option-text">Легально перемещаться по Европе</span>
+                </label>
+                <label class="option-item">
+                    <input type="radio" name="goal" value="Легальная работа">
+                    <div class="dot"></div>
+                    <span class="option-text">Легальная работа</span>
+                </label>
+                <label class="option-item">
+                    <input type="radio" name="goal" value="Вести бизнес в Европе">
+                    <div class="dot"></div>
+                    <span class="option-text">Вести бизнес в Европе</span>
+                </label>
+            </div>
+        </div>
+
+        <!-- ШАГ 4: Контакты -->
+        <div class="quiz-step" data-step="4">
+            <h2>Оставьте ваши контакты для связи</h2>
+            
+            <div class="form-group">
+                <label for="username">Ваше имя</label>
+                <input type="text" id="username" name="username" placeholder="Иван" required>
+            </div>
+
+            <div class="form-group">
+                <label for="phone">Номер телефона</label>
+                <div class="phone-input-wrapper">
+                    <select class="phone-select" id="phoneCode" onchange="updatePhonePlaceholder()">
+                        <option value="+380">UA (+380)</option>
+                        <option value="+48">PL (+48)</option>
+                        <option value="+49">DE (+49)</option>
+                        <option value="+420">CZ (+420)</option>
+                        <option value="+375">BY (+375)</option>
+                        <option value="+7">KZ/RU (+7)</option>
+                        <option value="">Другой</option>
+                    </select>
+                    <input type="tel" id="phone" name="phone" placeholder="67 123 4567" required>
+                </div>
+                <div class="error-msg" id="phoneError">Введите корректный номер телефона</div>
+            </div>
+
+            <div class="form-group">
+                <label for="telegram">Telegram (опционально)</label>
+                <input type="text" id="telegram" name="telegram" placeholder="@username">
+            </div>
+        </div>
+
+        <!-- ФИНАЛЬНЫЙ ШАГ: Успех -->
+        <div class="quiz-step" id="successStep">
+            <h2>Данные приняты!</h2>
+            <p class="success-desc">Спасибо за ответы. Наш специалист уже изучает ваш профиль и свяжется с вами в ближайшее время.</p>
+        </div>
+
+        <!-- Кнопки управления -->
+        <div class="btn-container" id="btnContainer">
+            <button type="button" class="btn btn-back" id="backBtn" onclick="changeStep(-1)" disabled>Назад</button>
+            <button type="button" class="btn btn-next" id="nextBtn" onclick="changeStep(1)">Далее</button>
+        </div>
+
+    </form>
+</div>
+
+<script>
+    const WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbxnLX-pKDUymEq9LdfBA2OEmH3pV6EjCC9k7G4BYU2oZlaFzse5ShHgPheACNjycfS5/exec';
+
+    let currentStep = 1;
+    const totalSteps = 4;
+
+    const phonePatterns = {
+        '+380': /^\d{9}$/,       
+        '+48': /^\d{9}$/,        
+        '+49': /^\d{10,11}$/,    
+        '+420': /^\d{9}$/,       
+        '+375': /^\d{9}$/,       
+        '+7': /^\d{10}$/         
+    };
+
+    function updateProgress() {
+        const percentage = (currentStep / totalSteps) * 100;
+        document.getElementById('progressBar').style.width = percentage + '%';
+    }
+
+    function toggleConditional(step, show) {
+        const container = document.getElementById(`conditional-step${step}`);
+        const input = container.querySelector('input');
+        if (show) {
+            container.style.display = 'block';
+            input.setAttribute('required', 'true');
+            input.focus();
+        } else {
+            container.style.display = 'none';
+            input.removeAttribute('required');
+            input.value = '';
+        }
+    }
+
+    function updatePhonePlaceholder() {
+        const code = document.getElementById('phoneCode').value;
+        const phoneInput = document.getElementById('phone');
+        if (code === '+380') phoneInput.placeholder = "67 123 4567";
+        else if (code === '+48' || code === '+420') phoneInput.placeholder = "123 456 789";
+        else if (code === '+7') phoneInput.placeholder = "701 123 4567";
+        else phoneInput.placeholder = "Номер телефона";
+    }
+
+    function validateStep(step) {
+        if (step === 1) {
+            const radio = document.querySelector('input[name="living_country"]:checked');
+            if (!radio) return false;
+            if (radio.value === 'Other') {
+                return document.getElementById('custom_living_country').value.trim() !== '';
+            }
+            return true;
+        }
+        if (step === 2) {
+            const radio = document.querySelector('input[name="citizenship"]:checked');
+            if (!radio) return false;
+            if (radio.value === 'Other') {
+                return document.getElementById('custom_citizenship').value.trim() !== '';
+            }
+            return true;
+        }
+        if (step === 3) {
+            return document.querySelector('input[name="goal"]:checked') !== null;
+        }
+        if (step === 4) {
+            const name = document.getElementById('username').value.trim();
+            const code = document.getElementById('phoneCode').value;
+            const phone = document.getElementById('phone').value.replace(/\s+/g, ''); 
+            const errorElement = document.getElementById('phoneError');
+
+            if (name === '') return false;
+
+            if (code in phonePatterns) {
+                const isValid = phonePatterns[code].test(phone);
+                if (!isValid) {
+                    errorElement.style.display = 'block';
+                    return false;
+                }
+            } else {
+                if (phone.length < 5) {
+                    errorElement.style.display = 'block';
+                    return false;
+                }
+            }
+            errorElement.style.display = 'none';
+            return true;
+        }
+        return true;
+    }
+
+    function changeStep(direction) {
+        if (direction === 1 && !validateStep(currentStep)) {
+            alert('Пожалуйста, выберите вариант ответа или заполните обязательные поля.');
+            return;
+        }
+
+        if (direction === 1 && currentStep === totalSteps) {
+            submitData();
+            return;
+        }
+
+        document.querySelector(`.quiz-step[data-step="${currentStep}"]`).classList.remove('active');
+        currentStep += direction;
+
+        document.querySelector(`.quiz-step[data-step="${currentStep}"]`).classList.add('active');
+        
+        document.getElementById('backBtn').disabled = currentStep === 1;
+        
+        if (currentStep === totalSteps) {
+            document.getElementById('nextBtn').innerText = 'Отправить заявку';
+        } else {
+            document.getElementById('nextBtn').innerText = 'Далее';
+        }
+
+        updateProgress();
+    }
+
+    function handleFormSubmit(event) {
+        if (event) event.preventDefault();
+        changeStep(1); 
+    }
+
+    function submitData() {
+        if (!validateStep(4)) return;
+
+        const nextBtn = document.getElementById('nextBtn');
+        const backBtn = document.getElementById('backBtn');
+        
+        nextBtn.disabled = true;
+        backBtn.disabled = true;
+        nextBtn.innerText = 'Отправка...';
+
+        const livingCountryRadio = document.querySelector('input[name="living_country"]:checked').value;
+        const livingCountry = livingCountryRadio === 'Other' ? document.getElementById('custom_living_country').value : livingCountryRadio;
+
+        const citizenshipRadio = document.querySelector('input[name="citizenship"]:checked').value;
+        const citizenship = citizenshipRadio === 'Other' ? document.getElementById('custom_citizenship').value : citizenshipRadio;
+
+        const goal = document.querySelector('input[name="goal"]:checked').value;
+        const name = document.getElementById('username').value;
+        const fullPhone = document.getElementById('phoneCode').value + document.getElementById('phone').value.replace(/\s+/g, '');
+        const telegram = document.getElementById('telegram').value;
+
+        const formData = {
+            livingCountry,
+            citizenship,
+            goal,
+            name,
+            phone: fullPhone,
+            telegram
+        };
+
+        function resetButtonsState() {
+            alert('Произошла ошибка при отправке данных. Пожалуйста, проверьте интернет-соединение или повторите попытку.');
+            nextBtn.disabled = false;
+            backBtn.disabled = false;
+            nextBtn.innerText = 'Отправить заявку';
+        }
+
+        try {
+            fetch(WEB_APP_URL, {
+                method: 'POST',
+                mode: 'no-cors', 
+                headers: {
+                    'Content-Type': 'text/plain' 
+                },
+                body: JSON.stringify(formData)
+            })
+            .then(() => {
+                // Трекинг успешного лида в Meta Pixel
+                if (typeof fbq === 'function') {
+                    fbq('track', 'Lead');
+                }
+
+                // Переход на экран Спасибо
+                document.querySelector(`.quiz-step[data-step="${currentStep}"]`).classList.remove('active');
+                document.getElementById('successStep').classList.add('active');
+                document.getElementById('btnContainer').style.display = 'none';
+                document.getElementById('progressContainer').style.display = 'none';
+            })
+            .catch(error => {
+                console.error('Ошибка промиса fetch:', error);
+                resetButtonsState();
+            });
+        } catch (e) {
+            console.error('Синхронное исключение fetch:', e);
+            resetButtonsState();
+        }
+    }
+
+    updatePhonePlaceholder();
+</script>
+
+</body>
+</html>

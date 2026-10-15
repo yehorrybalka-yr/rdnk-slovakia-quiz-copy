@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Узнайте легальный статус в Европе</title>
+    
+    <!-- Meta Pixel Code -->
+    <script>
+        !function(f,b,e,v,n,t,s)
+        {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+        n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+        if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+        n.queue=[];t=b.createElement(e);t.async=!0;
+        t.src=v;s=b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t,s)}(window, document,'script',
+        'https://connect.facebook.net/en_US/fbevents.js');
+        fbq('init', '1636543864097873');
+        fbq('init', '1719687629307966');
+        fbq('track', 'PageView');
+    </script>
+    <noscript>
+        <img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1636543864097873&ev=PageView&noscript=1"/>
+        <img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1719687629307966&ev=PageView&noscript=1"/>
+    </noscript>
+    <!-- End Meta Pixel Code -->
+
+    <style>
+        :root {
+            --bg-gradient: radial-gradient(circle at 50% 50%, #fbfbfd 0%, #eef2f7 100%);
+            --text-main: #111111;
+            --text-muted: #555555;
+            --accent-blue: #004694;
+            --border-color: #d1d5db;
+            --card-bg: rgba(255, 255, 255, 0.9);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background: var(--bg-gradient);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: var(--text-main);
+            padding: 20px;
+        }
+
+        .quiz-container {
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            width: 100%;
+            max-width: 540px;
+            border-radius: 24px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
+            padding: 40px 30px;
+            border: 1px solid rgba(255, 255, 255, 0.7);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .progress-container {
+            width: 100%;
+            height: 6px;
+            background: #e5e7eb;
+            border-radius: 10px;
+            margin-bottom: 35px;
+        }
+
+        .progress-bar {
+            height: 100%;
+            width: 16.66%;
+            background: var(--accent-blue);
+            border-radius: 10px;
+            transition: width 0.4s ease;
+        }
+
+        .quiz-step {
+            display: none;
+        }
+
+        .quiz-step.active {
+            display: block;
+            animation: fadeIn 0.4s ease forwards;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        h2 {
+            font-size: 24px;
+            font-weight: 700;
+            line-height: 1.3;
+            margin-bottom: 25px;
+            text-align: center;
+        }
+
+        .options-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-bottom: 25px;
+        }
+
+        .option-item {
+            display: flex;
+            align-items: center;
+            padding: 16px 20px;
+            border: 1px solid var(--border-color);
+            border-radius: 30px;
+            cursor: pointer;
+            background: #ffffff;
+            transition: all 0.2s ease;
+        }
+
+        .option-item:hover {
+            border-color: var(--accent-blue);
+            background: #f8fafc;
+        }
+
+        .option-item.selected {
+            border-color: var(--accent-blue);
+            background: #f0f6ff;
+        }
+
+        .option-item input[type="radio"] {
+            display: none;
+        }
+
+        .dot {
+            width: 8px;
+            height: 8px;
+            flex-shrink: 0;
+            background: transparent;
+            border: 2px solid var(--border-color);
+            border-radius: 50%;
+            margin-right: 14px;
+            transition: all 0.2s ease;
+        }
+
+        .option-item input[type="radio"]:checked + .dot,
+        .option-item.selected .dot {
+            background: var(--accent-blue);
+            border-color: var(--accent-blue);
+            box-shadow: 0 0 0 4px rgba(0, 70, 148, 0.2);
+        }
+
+        .option-text {
+            font-size: 16px;
+            font-weight: 500;
+        }
+
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: var(--text-muted);
+            padding-left: 10px;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 14px 20px;
+            border: 1px solid var(--border-color);
+            border-radius: 30px;
+            font-size: 16px;
+            outline: none;
+            transition: border-color 0.2s;
+            background: #ffffff;
+        }
+
+        .form-group input:focus {
+            border-color: var(--accent-blue);
+        }
+
+        .btn-container {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .btn {
+            padding: 14px 28px;
+            border-radius: 30px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            border: none;
+        }
+
+        .btn-back {
+            background: transparent;
+            color: var(--text-muted);
+            border: 1px solid var(--border-color);
+        }
+
+        .btn-back:hover {
+            background: #f1f5f9;
+            color: var(--text-main);
+        }
+
+        .btn-next {
+            background: var(--accent-blue);
+            color: #ffffff;
+            flex-grow: 1;
+        }
+
+        .btn-next:hover {
+            background: #00336c;
+            box-shadow: 0 4px 12px rgba(0, 70, 148, 0.2);
+        }
+
+        .btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .error-msg {
+            color: #dc2626;
+            font-size: 13px;
+            margin-top: 5px;
+            padding-left: 12px;
+            display: none;
+        }
+
+        .success-desc {
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 16px;
+            line-height: 1.5;
+        }
+    </style>
+</head>
+<body>
+
+<div class="quiz-container">
+    <div class="progress-container" id="progressContainer">
+        <div class="progress-bar" id="progressBar"></div>
+    </div>
+
+    <form id="quizForm" onsubmit="handleFormSubmit(event)">
+        <div id="stepsRoot"></div>
+
+        <div class="quiz-step" id="successStep">
+            <h2>Данные приняты!</h2>
+            <p class="success-desc">Спасибо за ответы. Наш специалист уже изучает ваш профиль и свяжется с вами в ближайшее время.</p>
+        </div>
+
+        <div class="btn-container" id="btnContainer">
+            <button type="button" class="btn btn-back" id="backBtn" onclick="goBack()" disabled>Назад</button>
+            <button type="submit" class="btn btn-next" id="submitBtn" style="display: none;">Отправить заявку</button>
+        </div>
+    </form>
+</div>
+
+<script>
+    const WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbxnLX-pKDUymEq9LdfBA2OEmH3pV6EjCC9k7G4BYU2oZlaFzse5ShHgPheACNjycfS5/exec';
+    const AUTO_ADVANCE_DELAY = 280;
+
+    const FAMILY_OPTIONS = [
+        { value: 'Один', label: 'Один' },
+        { value: 'Женат', label: 'Женат' },
+        { value: 'Есть дети', label: 'Есть дети' }
+    ];
+
+    const STEPS = {
+        q1: {
+            id: 'q1',
+            title: 'Когда вы выехали с Украины?',
+            field: 'departure_date',
+            options: [
+                { value: 'до 05.08.2026', next: 'q2a' },
+                { value: 'после 05.08.2026', next: 'q2' }
+            ]
+        },
+        q2: {
+            id: 'q2',
+            title: 'Сколько вам было полных лет на момент выезда?',
+            field: 'age_at_departure',
+            options: [
+                { value: 'до 23 лет', next: 'q3b' },
+                { value: 'больше 23 лет', next: 'q3' }
+            ]
+        },
+        q3: {
+            id: 'q3',
+            title: 'Как вы пересекали границу с Украиной?',
+            field: 'border_crossing',
+            options: [
+                { value: 'Транспорт', next: 'q4' },
+                { value: 'Самостоятельно', next: 'q4' }
+            ]
+        },
+        q4: {
+            id: 'q4',
+            title: 'Ваше семейное положение',
+            field: 'family_status',
+            options: FAMILY_OPTIONS.map((o) => ({ ...o, next: 'q5' }))
+        },
+        q5: {
+            id: 'q5',
+            title: 'В какой стране собираетесь жить?',
+            field: 'destination_country',
+            options: [
+                { value: 'Страна ЕС', next: 'contacts' },
+                { value: 'Страна вне ЕС', next: 'contacts' }
+            ]
+        },
+        q3b: {
+            id: 'q3b',
+            title: 'Какой у Вас основной запрос?',
+            field: 'main_request',
+            options: [
+                {
+                    value: 'Хочу легализовать свое пребывание в ЕС',
+                    next: 'q4b'
+                },
+                {
+                    value: 'Хочу получить временную защиту, как можно быстрее, пока это возможно',
+                    next: 'q4b'
+                }
+            ]
+        },
+        q4b: {
+            id: 'q4b',
+            title: 'Ваше семейное положение',
+            field: 'family_status',
+            options: FAMILY_OPTIONS.map((o) => ({ ...o, next: 'contacts' }))
+        },
+        q2a: {
+            id: 'q2a',
+            title: 'На каких документах вы сейчас пребываете в ЕС?',
+            field: 'eu_documents',
+            options: [
+                { value: 'Без статуса', next: 'q3a' },
+                { value: 'Защита', next: 'q3g' },
+                { value: 'ВНЖ', next: 'q3g' }
+            ]
+        },
+        q3a: {
+            id: 'q3a',
+            title: 'Ваше семейное положение',
+            field: 'family_status',
+            options: FAMILY_OPTIONS.map((o) => ({ ...o, next: 'contacts' }))
+        },
+        q3g: {
+            id: 'q3g',
+            title: 'Какой основной запрос?',
+            field: 'main_request',
+            options: [
+                {
+                    value: 'Хочу жить и строить жизнь в другой стране',
+                    next: 'q4g'
+                },
+                {
+                    value: 'Хочу продолжить свою легализацию и повысить статус',
+                    next: 'q4g'
+                },
+                {
+                    value: 'Просто интересуюсь, узнаю варианты, стоимость',
+                    next: 'contacts'
+                }
+            ]
+        },
+        q4g: {
+            id: 'q4g',
+            title: 'Ваше семейное положение',
+            field: 'family_status',
+            options: FAMILY_OPTIONS.map((o) => ({ ...o, next: 'contacts' }))
+        },
+        contacts: {
+            id: 'contacts',
+            type: 'contacts',
+            title: 'Оставьте ваши контакты для связи'
+        }
+    };
+
+    let history = ['q1'];
+    let answers = {};
+    let advanceTimer = null;
+    const trackedMetaEvents = new Set();
+
+    function trackMetaOnce(eventName, params) {
+        if (trackedMetaEvents.has(eventName)) return;
+        trackedMetaEvents.add(eventName);
+        if (typeof fbq === 'function') {
+            fbq('trackCustom', eventName, params || {});
+        }
+    }
+
+    function trackStepView(stepId) {
+        if (stepId === 'contacts') {
+            trackMetaOnce('Contacts', {
+                content_name: 'contacts',
+                step_id: 'contacts'
+            });
+            return;
+        }
+
+        const questionNumber = history.length;
+        trackMetaOnce('Question ' + questionNumber, {
+            content_name: 'Question ' + questionNumber,
+            step_id: stepId
+        });
+    }
+
+    function escapeHtml(str) {
+        return String(str)
+            .replace(/&/g, '&amp;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;')
+            .replace(/"/g, '&quot;');
+    }
+
+    function renderSteps() {
+        const root = document.getElementById('stepsRoot');
+        let html = '';
+
+        Object.values(STEPS).forEach((step) => {
+            if (step.type === 'contacts') {
+                html += `
+                    <div class="quiz-step" data-step-id="${step.id}">
+                        <h2>${escapeHtml(step.title)}</h2>
+                        <div class="form-group">
+                            <label for="username">Имя</label>
+                            <input type="text" id="username" name="username" placeholder="Иван" autocomplete="name">
+                        </div>
+                        <div class="form-group">
+                            <label for="contact">Номер телефона или Телеграм</label>
+                            <input type="text" id="contact" name="contact" placeholder="+380... или @username" autocomplete="tel">
+                            <div class="error-msg" id="contactError">Заполните имя и контакт для связи</div>
+                        </div>
+                    </div>
+                `;
+                return;
+            }
+
+            const optionsHtml = step.options.map((option, index) => `
+                <label class="option-item" data-next="${escapeHtml(option.next)}">
+                    <input
+                        type="radio"
+                        name="${escapeHtml(step.field)}"
+                        value="${escapeHtml(option.value)}"
+                        data-step-id="${step.id}"
+                        data-next="${escapeHtml(option.next)}"
+                    >
+                    <div class="dot"></div>
+                    <span class="option-text">${escapeHtml(option.label || option.value)}</span>
+                </label>
+            `).join('');
+
+            html += `
+                <div class="quiz-step" data-step-id="${step.id}">
+                    <h2>${escapeHtml(step.title)}</h2>
+                    <div class="options-list">
+                        ${optionsHtml}
+                    </div>
+                </div>
+            `;
+        });
+
+        root.innerHTML = html;
+
+        root.querySelectorAll('.option-item').forEach((item) => {
+            item.addEventListener('click', onOptionClick);
+        });
+    }
+
+    function currentStepId() {
+        return history[history.length - 1];
+    }
+
+    function showStep(stepId) {
+        document.querySelectorAll('.quiz-step').forEach((el) => el.classList.remove('active'));
+        const stepEl = document.querySelector(`.quiz-step[data-step-id="${stepId}"]`);
+        if (stepEl) stepEl.classList.add('active');
+
+        const isContacts = stepId === 'contacts';
+        document.getElementById('submitBtn').style.display = isContacts ? 'block' : 'none';
+        document.getElementById('backBtn').disabled = history.length <= 1;
+
+        updateProgress();
+        trackStepView(stepId);
+    }
+
+    function maxDepthAhead(stepId) {
+        if (stepId === 'contacts') return 0;
+        const step = STEPS[stepId];
+        if (!step || !step.options) return 0;
+        return Math.max(...step.options.map((option) => 1 + maxDepthAhead(option.next)));
+    }
+
+    function updateProgress() {
+        const stepId = currentStepId();
+        const total = history.length + maxDepthAhead(stepId);
+        const percentage = total > 0 ? Math.min(100, (history.length / total) * 100) : 100;
+        document.getElementById('progressBar').style.width = percentage + '%';
+    }
+
+    function clearAdvanceTimer() {
+        if (advanceTimer) {
+            clearTimeout(advanceTimer);
+            advanceTimer = null;
+        }
+    }
+
+    function onOptionClick(event) {
+        const label = event.currentTarget;
+        const input = label.querySelector('input[type="radio"]');
+        if (!input) return;
+
+        const stepId = input.dataset.stepId;
+        if (stepId !== currentStepId()) return;
+
+        const stepEl = label.closest('.quiz-step');
+        stepEl.querySelectorAll('.option-item').forEach((item) => item.classList.remove('selected'));
+        label.classList.add('selected');
+        input.checked = true;
+
+        answers[input.name] = input.value;
+
+        const nextId = input.dataset.next;
+        clearAdvanceTimer();
+        advanceTimer = setTimeout(() => {
+            goTo(nextId);
+        }, AUTO_ADVANCE_DELAY);
+    }
+
+    function goTo(nextId) {
+        clearAdvanceTimer();
+        if (!STEPS[nextId]) return;
+
+        // If user changes an earlier answer after going back, drop the old branch.
+        const currentId = currentStepId();
+        const currentStep = STEPS[currentId];
+        if (currentStep && currentStep.field) {
+            // Keep only answers that belong to the remaining path prefix.
+            pruneAnswersAfter(currentId);
+        }
+
+        history.push(nextId);
+        showStep(nextId);
+    }
+
+    function pruneAnswersAfter(fromStepId) {
+        const keepFields = new Set();
+        for (const stepId of history) {
+            const step = STEPS[stepId];
+            if (step && step.field) keepFields.add(step.field);
+            if (stepId === fromStepId) break;
+        }
+
+        Object.keys(answers).forEach((field) => {
+            if (!keepFields.has(field)) delete answers[field];
+        });
+    }
+
+    function goBack() {
+        clearAdvanceTimer();
+        if (history.length <= 1) return;
+
+        const leavingId = history.pop();
+        const currentId = currentStepId();
+        const leavingStep = STEPS[leavingId];
+
+        if (leavingStep && leavingStep.field) {
+            // Keep answer on the previous question so selection stays visible.
+            // Only clear fields that belonged to steps after current.
+            pruneAnswersAfter(currentId);
+        }
+
+        showStep(currentId);
+
+        // Restore visual selection on the restored step.
+        const step = STEPS[currentId];
+        if (step && step.field && answers[step.field]) {
+            const stepEl = document.querySelector(`.quiz-step[data-step-id="${currentId}"]`);
+            stepEl.querySelectorAll('.option-item').forEach((item) => {
+                const input = item.querySelector('input');
+                const selected = input && input.value === answers[step.field];
+                item.classList.toggle('selected', selected);
+                if (input) input.checked = selected;
+            });
+        }
+    }
+
+    function validateContacts() {
+        const name = document.getElementById('username').value.trim();
+        const contact = document.getElementById('contact').value.trim();
+        const errorElement = document.getElementById('contactError');
+
+        if (!name || !contact) {
+            errorElement.style.display = 'block';
+            return false;
+        }
+
+        errorElement.style.display = 'none';
+        return true;
+    }
+
+    function handleFormSubmit(event) {
+        if (event) event.preventDefault();
+        if (currentStepId() !== 'contacts') return;
+        if (!validateContacts()) {
+            alert('Пожалуйста, заполните имя и контакт для связи.');
+            return;
+        }
+        submitData();
+    }
+
+    /**
+     * Tier-1: основная ветка + «Страна ЕС»; ветка «а»
+     * Tier-2: ветка «б»; основная + «Страна вне ЕС»
+     * Tier-3: ветка «в» (интересуюсь); ветка «г»
+     */
+    function resolveLeadMeta() {
+        const pathIds = history.filter((id) => id !== 'contacts');
+        const has = (id) => pathIds.includes(id);
+        const curiosity = 'Просто интересуюсь, узнаю варианты, стоимость';
+
+        if (has('q5')) {
+            if (answers.destination_country === 'Страна вне ЕС') {
+                return { tier: 2, branch: 'main-non-eu' };
+            }
+            return { tier: 1, branch: 'main' };
+        }
+
+        if (has('q3b') || has('q4b')) {
+            return { tier: 2, branch: 'б' };
+        }
+
+        if (has('q3a')) {
+            return { tier: 1, branch: 'а' };
+        }
+
+        if (has('q4g')) {
+            return { tier: 3, branch: 'г' };
+        }
+
+        if (has('q3g') && (answers.main_request === curiosity || !has('q4g'))) {
+            return { tier: 3, branch: 'в' };
+        }
+
+        return { tier: 3, branch: 'unknown' };
+    }
+
+    function submitData() {
+        const submitBtn = document.getElementById('submitBtn');
+        const backBtn = document.getElementById('backBtn');
+
+        submitBtn.disabled = true;
+        backBtn.disabled = true;
+        submitBtn.innerText = 'Отправка...';
+
+        const name = document.getElementById('username').value.trim();
+        const contact = document.getElementById('contact').value.trim();
+        const leadMeta = resolveLeadMeta();
+
+        const formData = {
+            quizVersion: 'v2',
+            ...answers,
+            name,
+            contact,
+            phone: contact,
+            telegram: contact,
+            tier: leadMeta.tier,
+            branch: leadMeta.branch,
+            path: history.join(' → ')
+        };
+
+        function resetButtonsState() {
+            alert('Произошла ошибка при отправке данных. Пожалуйста, проверьте интернет-соединение или повторите попытку.');
+            submitBtn.disabled = false;
+            backBtn.disabled = false;
+            submitBtn.innerText = 'Отправить заявку';
+        }
+
+        try {
+            fetch(WEB_APP_URL, {
+                method: 'POST',
+                mode: 'no-cors',
+                headers: {
+                    'Content-Type': 'text/plain'
+                },
+                body: JSON.stringify(formData)
+            })
+            .then(() => {
+                if (typeof fbq === 'function') {
+                    fbq('track', 'Lead');
+                }
+
+                document.querySelector(`.quiz-step[data-step-id="${currentStepId()}"]`).classList.remove('active');
+                document.getElementById('successStep').classList.add('active');
+                document.getElementById('btnContainer').style.display = 'none';
+                document.getElementById('progressContainer').style.display = 'none';
+            })
+            .catch((error) => {
+                console.error('Ошибка промиса fetch:', error);
+                resetButtonsState();
+            });
+        } catch (e) {
+            console.error('Синхронное исключение fetch:', e);
+            resetButtonsState();
+        }
+    }
+
+    renderSteps();
+    showStep('q1');
+</script>
+
+</body>
+</html>
